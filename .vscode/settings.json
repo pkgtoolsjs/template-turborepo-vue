@@ -4,6 +4,7 @@
       "mode": "auto"
     }
   ],
+  "eslint.options": { "flags": ["unstable_config_lookup_from_file"] },
 
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
