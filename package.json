@@ -1,5 +1,5 @@
 {
-  "name": "with-vue-nuxt",
+  "name": "@baby-winter/template-turborepo-vue",
   "private": true,
   "type": "module",
   "scripts": {
