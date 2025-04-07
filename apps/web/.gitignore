@@ -20,9 +20,19 @@ coverage
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+*.tsbuildinfo
+
+# Cache files
+.eslintcache
+
+.package-lock.json
+.pnpm-lock.yaml
+yarn.lock
