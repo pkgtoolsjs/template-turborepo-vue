@@ -19,7 +19,7 @@
     "ui": "workspace:*"
   },
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
+    "eslint-config": "workspace:*",
     "tsconfig": "workspace:*",
     "@tsconfig/node22": "^22.0.1",
     "@types/jsdom": "^21.1.7",
