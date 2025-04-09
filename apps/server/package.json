@@ -17,6 +17,7 @@
     "@types/node": "^22.14.0",
     "eslint": "^9.24.0",
     "eslint-config": "workspace:*",
+    "prettier": "^3.5.3",
     "tsconfig": "workspace:*",
     "tslib": "^2.8.1",
     "tsup": "^8.4.0",
