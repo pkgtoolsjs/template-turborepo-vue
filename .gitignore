@@ -36,6 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# package lock files
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+
+# dist
+dist
+dist-ssr
