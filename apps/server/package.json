@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
+    "esbuild-fix-imports-plugin": "^1.0.19",
     "eslint": "^9.24.0",
     "eslint-config": "workspace:*",
     "prettier": "^3.5.3",

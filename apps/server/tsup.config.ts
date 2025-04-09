@@ -1,11 +1,20 @@
+import { globSync } from 'node:fs'
 import { defineConfig } from 'tsup'
+import { fixImportsPlugin } from 'esbuild-fix-imports-plugin'
+
+const entry = globSync('src/**/*.ts')
 
 export default defineConfig({
   tsconfig: 'tsconfig.build.json',
-  entry: ['src/index.ts'],
+  entry,
+  target: 'node16',
+  platform: 'node',
   format: ['esm'],
-  splitting: false,
   dts: true,
-  sourcemap: true,
-  clean: true
+  bundle: false,
+  splitting: false,
+  sourcemap: false,
+  clean: true,
+
+  esbuildPlugins: [fixImportsPlugin()]
 })
