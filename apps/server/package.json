@@ -9,8 +9,14 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "typescript-eslint": "^8.29.1",
+    "@types/node": "^22.14.0",
+    "eslint": "^9.24.0",
     "eslint-config": "workspace:*",
-    "tsconfig": "workspace:*"
+    "tsconfig": "workspace:*",
+    "tslib": "^2.8.1",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.29.1"
   }
 }
