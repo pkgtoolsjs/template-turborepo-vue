@@ -5,11 +5,9 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./vue": {
-      "import": "./vue.ts"
-    },
-    "./typescript": {
-      "import": "./typescript.ts"
+    "./*": {
+      "import": "./*.ts",
+      "types": "./*.ts"
     }
   },
   "devDependencies": {
