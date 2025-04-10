@@ -1,10 +1,6 @@
-import { defineConfigWithVueTs } from '@vue/eslint-config-typescript'
+import { eslintConfigVue } from 'eslint-config/vue'
 
-import baseVueESLintConfig from 'eslint-config/vue'
-
-export default defineConfigWithVueTs(
-  baseVueESLintConfig,
-
+export default eslintConfigVue(
   // Add your custom rules here:
   {
     name: 'app/custom-rules',

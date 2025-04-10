@@ -7,7 +7,7 @@ import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 // configureVueProject({ scriptLangs: ['ts', 'tsx'] })
 // More info at https://github.com/vuejs/eslint-config-typescript/#advanced-setup
 
-export default defineConfigWithVueTs(
+const baseConfig = defineConfigWithVueTs(
   {
     name: 'app/files-to-lint',
     files: ['**/*.{ts,mts,tsx,vue}']
@@ -35,3 +35,9 @@ export default defineConfigWithVueTs(
     }
   }
 )
+
+const eslintConfigVue: typeof defineConfigWithVueTs = (...config: []) => {
+  return defineConfigWithVueTs(baseConfig, ...config)
+}
+
+export { eslintConfigVue }
