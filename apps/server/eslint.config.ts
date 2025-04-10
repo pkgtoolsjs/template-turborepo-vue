@@ -1,9 +1,6 @@
-import tseslint from 'typescript-eslint'
-import baseLibraryESLintConfig from 'eslint-config/config-library'
+import { eslintConfigTypescript } from 'eslint-config/typescript'
 
-export default tseslint.config(
-  baseLibraryESLintConfig,
-
+export default eslintConfigTypescript(
   // Add your custom rules here:
   {
     name: 'app/custom-rules',

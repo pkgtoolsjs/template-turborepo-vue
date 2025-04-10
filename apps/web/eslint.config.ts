@@ -1,6 +1,6 @@
 import { defineConfigWithVueTs } from '@vue/eslint-config-typescript'
 
-import baseVueESLintConfig from 'eslint-config/config-vue'
+import baseVueESLintConfig from 'eslint-config/vue'
 
 export default defineConfigWithVueTs(
   baseVueESLintConfig,

@@ -11,19 +11,21 @@
     "test": "echo \"OK\" && exit 0",
     "dev": "tsx watch ./src/index.ts --nolazy",
     "start": "node ./dist/index.js",
-    "build": "tsup"
+    "type-check": "tsc --noEmit",
+    "build": "run-p type-check build-only",
+    "build-only": "tsup"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
     "esbuild-fix-imports-plugin": "^1.0.19",
     "eslint": "^9.24.0",
     "eslint-config": "workspace:*",
+    "npm-run-all2": "^7.0.2",
     "prettier": "^3.5.3",
     "tsconfig": "workspace:*",
     "tslib": "^2.8.1",
     "tsup": "^8.4.0",
     "tsx": "^4.19.3",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.29.1"
+    "typescript": "~5.8.3"
   }
 }
