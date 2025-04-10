@@ -3,6 +3,15 @@
   "license": "MIT",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "exports": {
+    "./vue": {
+      "import": "./vue.ts"
+    },
+    "./typescript": {
+      "import": "./typescript.ts"
+    }
+  },
   "devDependencies": {
     "@types/node": "~22.14.0",
     "tsconfig": "workspace:*",
