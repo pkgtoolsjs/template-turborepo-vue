@@ -40,4 +40,4 @@ const eslintConfigVue: typeof defineConfigWithVueTs = (...config: []) => {
   return defineConfigWithVueTs(baseConfig, ...config)
 }
 
-export { eslintConfigVue }
+export { eslintConfigVue, defineConfigWithVueTs }
