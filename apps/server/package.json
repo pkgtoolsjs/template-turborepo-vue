@@ -9,8 +9,8 @@
     "lint": "eslint . --fix",
     "format": "prettier --write .",
     "test": "echo \"OK\" && exit 0",
-    "dev": "tsx watch ./src/index.ts --nolazy",
-    "start": "node ./dist/index.js",
+    "dev": "tsx watch --env-file=.env ./src/index.ts --nolazy",
+    "start": "node --env-file=.env ./dist/index.js",
     "type-check": "tsc --noEmit",
     "build": "run-p type-check build-only",
     "build-only": "tsup"
