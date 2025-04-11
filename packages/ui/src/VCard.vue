@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 const props = defineProps<{
-  class?: string;
-  title: string;
-  href: string;
-}>();
+  class?: string
+  title: string
+  href: string
+}>()
 </script>
 
 <template>
