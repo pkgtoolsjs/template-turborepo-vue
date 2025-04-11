@@ -1,34 +1,33 @@
 <script setup lang="ts">
-import Card from "./card.vue";
-import Gradient from "./gradient.vue";
+import Card from './VCard.vue'
+import Gradient from './VGradient.vue'
 
 const LINKS = [
   {
-    title: "Docs",
-    href: "https://turbo.build/docs",
-    description: "Find in-depth information about Turborepo features and API.",
+    title: 'Docs',
+    href: 'https://turbo.build/docs',
+    description: 'Find in-depth information about Turborepo features and API.'
   },
   {
-    title: "Learn",
-    href: "https://turbo.build/docs/handbook",
-    description: "Learn more about monorepos with our handbook.",
+    title: 'Learn',
+    href: 'https://turbo.build/docs/handbook',
+    description: 'Learn more about monorepos with our handbook.'
   },
   {
-    title: "Templates",
-    href: "https://turbo.build/docs/getting-started/from-example",
-    description: "Choose from over 15 examples and deploy with a single click.",
+    title: 'Templates',
+    href: 'https://turbo.build/docs/getting-started/from-example',
+    description: 'Choose from over 15 examples and deploy with a single click.'
   },
   {
-    title: "Deploy",
-    href: "https://vercel.com/new",
-    description:
-      "Instantly deploy your Turborepo to a shareable URL with Vercel.",
-  },
-];
+    title: 'Deploy',
+    href: 'https://vercel.com/new',
+    description: 'Instantly deploy your Turborepo to a shareable URL with Vercel.'
+  }
+]
 
 const props = defineProps<{
-  appName: string;
-}>();
+  appName: string
+}>()
 </script>
 
 <template>
@@ -45,7 +44,7 @@ const props = defineProps<{
           rel="noopener noreferrer"
           target="_blank"
         >
-          By{{ " " }}
+          By{{ ' ' }}
           <img
             alt="Vercel Logo"
             class="vercelLogo"
@@ -62,12 +61,7 @@ const props = defineProps<{
       <div class="heroContent">
         <div class="logos">
           <div class="circles">
-            <img
-              alt="Turborepo"
-              height="614"
-              src="./assets/circles.svg"
-              width="614"
-            />
+            <img alt="Turborepo" height="614" src="./assets/circles.svg" width="614" />
           </div>
 
           <div class="logoGradientContainer">
@@ -75,13 +69,7 @@ const props = defineProps<{
           </div>
 
           <div class="logo">
-            <img
-              alt=""
-              height="120"
-              priority
-              src="./assets/turborepo.svg"
-              width="120"
-            />
+            <img alt="" height="120" priority src="./assets/turborepo.svg" width="120" />
           </div>
         </div>
         <Gradient class="backgroundGradient" conic />
@@ -140,14 +128,14 @@ const props = defineProps<{
 </template>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --font-mono:
+    ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono',
+    'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
@@ -176,16 +164,12 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
 }
 
@@ -255,9 +239,9 @@ a {
   justify-content: space-between;
   align-items: center;
   width: auto;
-  font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  font-family:
+    system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   padding-top: 48px;
 
   @media (min-width: 768px) {
@@ -387,11 +371,7 @@ a {
     inset: auto 0 0;
     padding: 2rem;
     height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
+    background: linear-gradient(to bottom, transparent 0%, rgb(var(--background-end-rgb)) 40%);
     z-index: 1;
   }
 }
@@ -456,8 +436,7 @@ a {
 }
 
 .code {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-    monospace;
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   font-weight: 700;
 }
 

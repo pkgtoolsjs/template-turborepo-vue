@@ -8,6 +8,7 @@
     "lint": "eslint ."
   },
   "devDependencies": {
+    "eslint": "^9.24.0",
     "eslint-config": "workspace:*",
     "tsconfig": "workspace:*",
     "vue": "^3.5.13"
