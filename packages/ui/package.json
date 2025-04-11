@@ -1,5 +1,5 @@
 {
-  "name": "ui",
+  "name": "@template-turborepo-vue/ui",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -10,10 +10,10 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
+    "@template-turborepo-vue/eslint-config": "workspace:*",
+    "@template-turborepo-vue/tsconfig": "workspace:*",
     "eslint": "^9.24.0",
-    "eslint-config": "workspace:*",
     "prettier": "^3.5.3",
-    "tsconfig": "workspace:*",
     "vue": "^3.5.13"
   }
 }

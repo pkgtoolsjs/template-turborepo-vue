@@ -1,5 +1,5 @@
 {
-  "name": "math",
+  "name": "@template-turborepo-vue/math",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -17,13 +17,13 @@
     "build-only": "tsup"
   },
   "devDependencies": {
+    "@template-turborepo-vue/eslint-config": "workspace:*",
+    "@template-turborepo-vue/tsconfig": "workspace:*",
     "@types/node": "^22.14.0",
     "esbuild-fix-imports-plugin": "^1.0.19",
     "eslint": "^9.24.0",
-    "eslint-config": "workspace:*",
     "npm-run-all2": "^7.0.2",
     "prettier": "^3.5.3",
-    "tsconfig": "workspace:*",
     "tslib": "^2.8.1",
     "tsup": "^8.4.0",
     "tsx": "^4.19.3",

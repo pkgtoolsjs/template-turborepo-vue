@@ -1,5 +1,5 @@
 {
-  "name": "@baby-winter/template-turborepo-vue",
+  "name": "template-turborepo-vue",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,7 +13,7 @@
   "devDependencies": {
     "execa": "^9.5.2",
     "is-ci": "^4.1.0",
-    "lint-staged": "^15.5.0",
+    "lint-staged": "^15.5.1",
     "prettier": "^3.5.3",
     "simple-git-hooks": "^2.12.1",
     "turbo": "^2.5.0"
