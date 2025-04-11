@@ -3,5 +3,5 @@
  * @type {import('lint-staged').Configuration}
  */
 export default {
-  '*': 'prettier --write'
+  '*.{js?(x),ts?(x),json,md,vue,css,scss,sass,less}': 'prettier --write'
 }

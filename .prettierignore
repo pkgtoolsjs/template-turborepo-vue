@@ -5,3 +5,5 @@ node_modules/
 **/dist-ssr/
 **/src/typings/
 **/src/types/
+pnpm-lock.yaml
+CHANGELOG*.md
