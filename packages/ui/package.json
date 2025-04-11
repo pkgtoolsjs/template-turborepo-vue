@@ -5,11 +5,13 @@
   "main": "./index.ts",
   "types": "./index.ts",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint . --fix",
+    "format": "prettier --config ../../prettier.config.js --ignore-path ../../.prettierignore --write ."
   },
   "devDependencies": {
     "eslint": "^9.24.0",
     "eslint-config": "workspace:*",
+    "prettier": "^3.5.3",
     "tsconfig": "workspace:*",
     "vue": "^3.5.13"
   }

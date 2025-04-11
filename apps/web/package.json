@@ -10,7 +10,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --config ../../prettier.config.js --ignore-path ../../.prettierignore --write ."
   },
   "dependencies": {
     "pinia": "^3.0.2",

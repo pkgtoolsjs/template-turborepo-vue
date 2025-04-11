@@ -6,8 +6,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "lint": "eslint .",
-    "format": "prettier --write .",
+    "lint": "eslint . --fix",
+    "format": "prettier --config ../../prettier.config.js --ignore-path ../../.prettierignore --write .",
     "test": "echo \"OK\" && exit 0",
     "dev": "tsx watch ./src/index.ts --nolazy",
     "start": "node ./dist/index.js",
