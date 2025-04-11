@@ -13,6 +13,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@nuxt/ui": "^3.0.2",
     "@template-turborepo-vue/ui": "workspace:*",
     "axios": "^1.8.4",
     "pinia": "^3.0.2",
