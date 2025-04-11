@@ -2,24 +2,33 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
+
+import ui from '@nuxt/ui/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
   server: {
     host: '0.0.0.0',
-    strictPort: true
+    strictPort: true,
+    proxy: {
+      '/api/v1': {
+        target: 'http://localhost:5183',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/v1/, '')
+      }
+    }
   },
   plugins: [
     vue(),
-    AutoImport({
-      dts: 'src/types/auto-imports.d.ts',
-      imports: ['vue', 'vue-router', 'pinia']
-    }),
-    Components({
-      dts: 'src/types/components.d.ts',
-      resolvers: []
+    ui({
+      autoImport: {
+        dts: 'src/types/auto-imports.d.ts',
+        imports: ['vue', 'vue-router', 'pinia']
+      },
+      components: {
+        dts: 'src/types/components.d.ts',
+        resolvers: []
+      }
     }),
     vueDevTools()
   ],
