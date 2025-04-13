@@ -6,7 +6,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "lint": "eslint . --fix",
+    "lint": "eslint --fix .",
     "format": "prettier --write .",
     "test": "echo \"OK\" && exit 0",
     "dev": "tsx watch --env-file=.env ./src/index.ts --nolazy",
