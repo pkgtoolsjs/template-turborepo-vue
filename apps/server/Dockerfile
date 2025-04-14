@@ -1,6 +1,5 @@
 FROM node:22.14.0-alpine AS base
 
-# —————————————— 构建阶段 ——————————————
 FROM base AS builder
 
 RUN apk update
