@@ -20,7 +20,6 @@ COPY . .
 RUN turbo prune @template-turborepo-vue/server
 
 
-# —————————————— 安装阶段 ——————————————
 FROM base AS installer
 
 RUN apk update
@@ -34,21 +33,18 @@ RUN npm install -g pnpm
 
 WORKDIR /app
 
-# 安装依赖（全量安装）
 COPY .gitignore .gitignore
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
 RUN pnpm install --ignore-scripts
 
-# 构建项目
 COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 
 RUN pnpm run build
 
 
-# —————————————— 运行阶段 ——————————————
 FROM base AS runner
 
 RUN apk update
