@@ -6,18 +6,18 @@ FROM base AS builder
 RUN apk update
 RUN apk add --no-cache libc6-compat
 
+ENV CI=1
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN npm config set registry https://registry.npmmirror.com
-RUN npm install -g pnpm \
-  && pnpm config set registry https://registry.npmmirror.com
+RUN npm install -g pnpm
 
 WORKDIR /app
 RUN pnpm install turbo -g
+
 COPY . .
 
-# 精简项目
-RUN pnpm run prune:server
+RUN turbo prune @template-turborepo-vue/server
 
 
 # —————————————— 安装阶段 ——————————————
@@ -26,11 +26,11 @@ FROM base AS installer
 RUN apk update
 RUN apk add --no-cache libc6-compat
 
+ENV CI=1
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN npm config set registry https://registry.npmmirror.com
-RUN npm install -g pnpm \
-  && pnpm config set registry https://registry.npmmirror.com
+RUN npm install -g pnpm
 
 WORKDIR /app
 
@@ -39,7 +39,7 @@ COPY .gitignore .gitignore
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
-RUN pnpm install
+RUN pnpm install --ignore-scripts
 
 # 构建项目
 COPY --from=builder /app/out/full/ .
@@ -54,11 +54,11 @@ FROM base AS runner
 RUN apk update
 RUN apk add --no-cache libc6-compat
 
+ENV CI=1
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN npm config set registry https://registry.npmmirror.com
-RUN npm install -g pnpm \
-  && pnpm config set registry https://registry.npmmirror.com
+RUN npm install -g pnpm
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nodejs
@@ -67,8 +67,7 @@ WORKDIR /app
 
 COPY --from=installer /app .
 
-ENV CI=1
-RUN pnpm install -P
+RUN pnpm install -P --ignore-scripts
 
 EXPOSE 5183
 
