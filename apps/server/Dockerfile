@@ -1,5 +1,7 @@
 FROM node:22.14.0-alpine AS base
 
+ENV PACKAGE_NAME=@template-turborepo-vue/server
+
 FROM base AS builder
 
 RUN apk update
@@ -16,7 +18,7 @@ RUN pnpm install turbo -g
 
 COPY . .
 
-RUN turbo prune @template-turborepo-vue/server --docker
+RUN turbo prune $PACKAGE_NAME --docker
 
 
 FROM base AS installer
