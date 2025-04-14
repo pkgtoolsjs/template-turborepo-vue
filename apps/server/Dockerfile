@@ -43,27 +43,24 @@ COPY turbo.json turbo.json
 
 RUN pnpm run build
 
+RUN pnpm prune --prod --ignore-scripts
+RUN find . -type d \( -name node_modules -o -name src -o -name scripts \) -prune -exec rm -rf '{}' +
+
+RUN pnpm install -P --ignore-scripts
+
 
 FROM base AS runner
 
 RUN apk update
 RUN apk add --no-cache libc6-compat
 
-ENV CI=1
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN npm config set registry https://registry.npmmirror.com
-RUN npm install -g pnpm
-
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nodejs
+USER nodejs
 
 WORKDIR /app
 
 COPY --from=installer --chown=nodejs:nodejs /app .
 
-RUN pnpm install -P --ignore-scripts
-
-USER nodejs
 EXPOSE 5183
 CMD ["node", "apps/server/dist/index.js"]
