@@ -5,6 +5,10 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "node ./scripts/postinstall.js",
+    "prune:server": "npx -y npm-run-all2 -s prune-server-only copy-scripts-to-out-full copy-scripts-to-out-json",
+    "prune-server-only": "turbo prune @template-turborepo-vue/server --docker",
+    "copy-scripts-to-out-full": "npx -y cpy-cli 'scripts/**' out/full/scripts/",
+    "copy-scripts-to-out-json": "npx -y cpy-cli 'scripts/**' out/json/scripts/",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
@@ -15,7 +19,9 @@
     "execa": "^9.5.2",
     "is-ci": "^4.1.0",
     "lint-staged": "^15.5.1",
+    "npm-run-all2": "^7.0.2",
     "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
     "simple-git-hooks": "^2.12.1",
     "turbo": "^2.5.0"
   },
