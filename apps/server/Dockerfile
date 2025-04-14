@@ -60,11 +60,10 @@ RUN adduser --system --uid 1001 nodejs
 
 WORKDIR /app
 
-COPY --from=installer /app .
+COPY --from=installer --chown=nodejs:nodejs /app .
 
 RUN pnpm install -P --ignore-scripts
 
-EXPOSE 5183
-
 USER nodejs
+EXPOSE 5183
 CMD ["node", "apps/server/dist/index.js"]
