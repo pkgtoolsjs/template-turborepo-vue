@@ -16,7 +16,7 @@ RUN pnpm install turbo -g
 
 COPY . .
 
-RUN turbo prune @template-turborepo-vue/server
+RUN turbo prune @template-turborepo-vue/server --docker
 
 
 FROM base AS installer
