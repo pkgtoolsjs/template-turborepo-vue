@@ -9,7 +9,6 @@ yarn.lock
 *.log
 
 .git
-.gitignore
 .gitattributes
 
 .DS_Store

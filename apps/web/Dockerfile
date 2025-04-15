@@ -1,7 +1,7 @@
 FROM node:22.14.0-alpine AS nodebase
-FROM nginx:stable-alpine AS nginx
 
-ENV PACKAGE_NAME=@template-turborepo-vue/web
+ARG PACKAGE_NAME
+
 
 FROM nodebase AS builder
 
@@ -18,7 +18,7 @@ RUN pnpm install turbo -g
 
 COPY . .
 
-RUN turbo prune @template-turborepo-vue/web --docker
+RUN turbo prune $PACKAGE_NAME --docker
 
 
 FROM nodebase AS installer
@@ -45,7 +45,7 @@ COPY turbo.json turbo.json
 RUN pnpm run build
 
 
-FROM nginx AS runner
+FROM nginx:stable-alpine AS runner
 
 WORKDIR /usr/share/nginx
 

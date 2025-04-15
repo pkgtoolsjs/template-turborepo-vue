@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: ./apps/web/Dockerfile
+      args:
+        PACKAGE_NAME: '@template-turborepo-vue/web'
     restart: always
     ports:
       - 5173:80
@@ -13,8 +15,10 @@ services:
     build:
       context: .
       dockerfile: ./apps/server/Dockerfile
+      args:
+        PACKAGE_NAME: '@template-turborepo-vue/server'
     env_file:
-      - .env
+      - ./apps/server/.env
     restart: always
     ports:
       - ${PORT}:${PORT}

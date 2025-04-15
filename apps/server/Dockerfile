@@ -1,13 +1,13 @@
 FROM node:22.14.0-alpine AS base
 
-ENV PACKAGE_NAME=@template-turborepo-vue/server
+ARG PACKAGE_NAME
+
 
 FROM base AS builder
 
 RUN apk update
 RUN apk add --no-cache libc6-compat
 
-ENV CI=1
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN npm config set registry https://registry.npmmirror.com
