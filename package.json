@@ -5,6 +5,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "node ./scripts/postinstall.js",
+    "test": "turbo run test",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
