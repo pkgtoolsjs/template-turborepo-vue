@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         # The --no-lockfile flag is used solely for build demonstration purposes in this template project.
         # Make sure to remove it in your actual project, and ensure that pnpm-lock.yaml is not listed in .gitignore.
-        run: pnpm install --no-lockfile
+        run: pnpm install # --no-lockfile
 
       - name: Run test
         run: pnpm test
