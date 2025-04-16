@@ -14,9 +14,7 @@ permissions:
 jobs:
   unit-test:
     runs-on: ubuntu-latest
-    if: (github.event_name == 'push' && github.event_name != 'pull_request') || github.event_name == 'pull_request'
     env:
-      PUPPETEER_SKIP_DOWNLOAD: 'true'
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
     strategy:
@@ -35,9 +33,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        # The --no-lockfile flag is used solely for build demonstration purposes in this template project.
-        # Make sure to remove it in your actual project, and ensure that pnpm-lock.yaml is not listed in .gitignore.
-        run: pnpm install # --no-lockfile
+        run: pnpm install
 
       - name: Run test
         run: pnpm test
