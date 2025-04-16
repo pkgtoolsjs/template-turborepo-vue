@@ -45,10 +45,10 @@ COPY turbo.json turbo.json
 RUN pnpm run build
 
 
-FROM nginx:stable-alpine AS runner
+FROM openresty/openresty:1.21.4.1-0-alpine AS runner
 
-WORKDIR /usr/share/nginx
+WORKDIR /usr/local/openresty/nginx/html
 
-COPY --from=installer --chown=nginx:nginx /app/apps/web/dist ./html
+COPY --from=installer --chown=nginx:nginx /app/apps/web/dist .
 
 EXPOSE 80
