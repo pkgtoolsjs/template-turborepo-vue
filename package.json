@@ -31,6 +31,6 @@
   },
   "packageManager": "pnpm@10.8.1",
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "pnpm lint-staged"
   }
 }
