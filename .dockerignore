@@ -33,4 +33,5 @@ packages/*/dist
 
 *.md
 
+.github
 deploy
