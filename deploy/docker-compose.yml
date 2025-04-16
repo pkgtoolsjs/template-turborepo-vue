@@ -1,0 +1,16 @@
+services:
+  web:
+    image: template-turborepo-vue/web:latest
+    container_name: web
+    restart: always
+    ports:
+      - 5173:80
+
+  server:
+    image: template-turborepo-vue/server:latest
+    container_name: server
+    env_file:
+      - ./configs/.env
+    restart: always
+    ports:
+      - ${PORT}:${PORT}

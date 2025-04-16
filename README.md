@@ -1,4 +1,4 @@
-# Turborepo VueJS/NuxtJS starter
+# template-turborepo-vue
 
 This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
 
@@ -16,10 +16,16 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
+#### apps:
+
 - `web`: another [Vue3](https://vuejs.org/) app
-- `ui`: a stub Vue component library shared by both `web` and `docs` applications
-- `eslint-config`: `eslint` configurations (includes `@nuxtjs/eslint-config-typescript` and `@vue/eslint-config-typescript`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `server`: a simple Fastify-powered server that exposes APIs for the web app
+
+#### packages:
+
+- `ui`: a stub Vue component library shared by both `web` and other Vue3-based applications
+- `eslint-config`: shared ESLint configuration used across projects
+- `tsconfig`: shared tsconfig.json configurations used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 

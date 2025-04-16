@@ -32,3 +32,5 @@ packages/*/dist
 *.local.*
 
 *.md
+
+deploy
