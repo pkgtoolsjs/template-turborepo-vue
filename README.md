@@ -1,4 +1,4 @@
-# template-turborepo-vue
+# template-turborepo-vue [![CI](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/ci.yml/badge.svg)](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/ci.yml)
 
 A monorepo project template managed with Turborepo, including both web and server applications.
 
