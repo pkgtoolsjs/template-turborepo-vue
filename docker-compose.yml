@@ -21,4 +21,4 @@ services:
       - ./apps/server/.env
     restart: always
     ports:
-      - ${PORT}:${PORT}
+      - 5183:5183

@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs'
+
 const isProd = process.env.NODE_ENV === 'production'
 
 if (isProd) process.exit()
@@ -9,7 +11,7 @@ try {
 
   const { execa } = await import('execa')
 
-  await execa('simple-git-hooks', { stdout: process.stdout })
+  if (existsSync('.git')) await execa('simple-git-hooks', { stdout: process.stdout })
 } catch (error) {
   console.error(error)
 }
