@@ -1,24 +1,36 @@
 services:
   web:
     container_name: web
+    depends_on:
+      - server
+    restart: always
     build:
       context: .
       dockerfile: ./apps/web/Dockerfile
       args:
         PACKAGE_NAME: '@template-turborepo-vue/web'
-    restart: always
+    networks:
+      - app-network
     ports:
       - 5173:80
+    volumes:
+      - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
 
   server:
     container_name: server
+    env_file:
+      - ./apps/server/.env
+    restart: always
     build:
       context: .
       dockerfile: ./apps/server/Dockerfile
       args:
         PACKAGE_NAME: '@template-turborepo-vue/server'
-    env_file:
-      - ./apps/server/.env
-    restart: always
+    networks:
+      - app-network
     ports:
       - 5183:5183
+
+networks:
+  app-network:
+    driver: bridge
