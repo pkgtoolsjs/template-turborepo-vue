@@ -1,13 +1,13 @@
 # template-turborepo-vue
 
-This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
+A monorepo project template managed with Turborepo, including both web and server applications.
 
 ## Using this example
 
 Run the following command:
 
 ```sh
-npx create-turbo@latest -e with-vue-nuxt
+npx degit https://github.com/nice-winter/template-turborepo-vue.git my-turborepo
 ```
 
 ## What's inside?
@@ -18,8 +18,8 @@ This Turborepo includes the following packages/apps:
 
 #### apps:
 
-- `web`: another [Vue3](https://vuejs.org/) app
-- `server`: a simple Fastify-powered server that exposes APIs for the web app
+- `web`: A [Vue 3](https://vuejs.org/) app with [Vue Router](https://router.vuejs.org/), [Pinia](https://pinia.vuejs.org/), and [Nuxt UI](https://ui.nuxt.com/)
+- `server`: A simple [Fastify](https://fastify.dev/)-powered server that exposes APIs for the web app
 
 #### packages:
 
