@@ -64,5 +64,6 @@ WORKDIR /app
 
 COPY --from=builder --chown=nodejs:nodejs /app .
 
+ENTRYPOINT ["node", "apps/server/dist/index.js"]
+
 EXPOSE 5183
-CMD ["node", "apps/server/dist/index.js"]
