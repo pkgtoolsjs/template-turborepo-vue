@@ -48,8 +48,10 @@ RUN pnpm run build
 
 FROM openresty/openresty:1.21.4.1-0-alpine AS runner
 
-# RUN addgroup -S nginx && adduser -S -G nginx nginx \
+RUN addgroup -S nginx && adduser -S -G nginx nginx
+# RUN mkdir -p /var/log/nginx \
 #     && mkdir -p /var/run/openresty \
+#     && chown -R nginx:nginx /var/log/nginx \
 #     && chown -R nginx:nginx /var/run/openresty \
 #     && chown -R nginx:nginx /usr/local/openresty
 # USER nginx
