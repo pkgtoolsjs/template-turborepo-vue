@@ -12,12 +12,14 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN npm config set registry https://registry.npmmirror.com
 RUN npm install -g pnpm
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store
 
 WORKDIR /app
-RUN pnpm install turbo -g
+
 
 COPY . .
 
+RUN pnpm install turbo -g
 RUN turbo prune $PACKAGE_NAME --docker
 
 
@@ -30,6 +32,7 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN npm config set registry https://registry.npmmirror.com
 RUN npm install -g pnpm
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store
 
 WORKDIR /app
 
