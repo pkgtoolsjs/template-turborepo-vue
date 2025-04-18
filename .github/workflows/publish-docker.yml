@@ -31,7 +31,7 @@ jobs:
         run: |
           # 提取 docker-compose.yml 中所有服务的镜像名称（需提前安装 yq）
           SERVICES=$(docker compose config --services)
-          echo "services=$SERVICES" >> $GITHUB_OUTPUT
+          echo "services=$(echo $SERVICES | tr '\n' ' ')" >> $GITHUB_OUTPUT
         env:
           COMPOSE_FILE: docker-compose.yml # 指定 compose 文件路径
 
