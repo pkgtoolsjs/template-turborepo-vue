@@ -24,8 +24,8 @@ jobs:
         id: extract-services
         run: |
           # 提取 docker-compose.yml 中所有服务的镜像名称（需提前安装 yq）
-          SERVICES=$(docker compose config --services)
-          echo "services=$(echo $SERVICES | jq -R -s -c 'split(" ")')" >> $GITHUB_OUTPUT
+          # SERVICES=$(docker compose config --services)
+          echo "services=$(docker compose config --services)" >> $GITHUB_OUTPUT
         env:
           COMPOSE_FILE: docker-compose.yml # 指定 compose 文件路径
 
