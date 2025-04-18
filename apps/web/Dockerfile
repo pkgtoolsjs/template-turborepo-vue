@@ -61,6 +61,9 @@ RUN addgroup -S nginx && adduser -S -G nginx nginx
 
 WORKDIR /usr/local/openresty/nginx/html
 
+COPY --from=pruner --chown=nobody:nobody /app/apps/web/nginx/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY --from=pruner --chown=nobody:nobody /app/apps/web/nginx/conf.d/ /etc/nginx/conf.d/
+
 COPY --from=builder --chown=nobody:nobody /app/apps/web/dist .
 
 EXPOSE 80
