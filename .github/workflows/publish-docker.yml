@@ -58,11 +58,13 @@ jobs:
         run: |
           # 为每个服务构建镜像并推送到 GHCR
           for SERVICE in ${{ steps.extract-services.outputs.services }}; do
-            docker compose build $SERVICE
+            # docker compose build $SERVICE
             IMAGE_TAG="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/$SERVICE:${{ steps.tag.outputs.tag }}"
-            docker tag ${SERVICE} $IMAGE_TAG
-            # docker push $IMAGE_TAG
+            # docker tag ${SERVICE} $IMAGE_TAG
+            # # docker push $IMAGE_TAG
+            echo "Service: $SERVICE"
             echo "Pushed: $IMAGE_TAG"
           done
 
+          docker compose build
           docker image ls
