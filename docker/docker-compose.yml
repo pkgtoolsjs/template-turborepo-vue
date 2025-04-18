@@ -32,4 +32,4 @@ networks:
     driver: bridge
 
 volumes:
-  - logs:./logs
+  logs:
