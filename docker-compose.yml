@@ -17,6 +17,9 @@ services:
     # volumes:
     #   - ./apps/web/nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
     #   - ./apps/web/nginx/conf.d:/etc/nginx/conf.d:ro
+    #   - logs:/var/log/nginx
+    #   - logs:/usr/local/openresty/nginx/logs
+    #   - /var/run/openresty
 
   server:
     image: template-turborepo-vue/server:${TAG:-latest}
@@ -37,3 +40,6 @@ services:
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  - logs:./logs

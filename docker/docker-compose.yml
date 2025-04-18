@@ -10,14 +10,17 @@ services:
     ports:
       - 5173:80
     # volumes:
-    #   - ./apps/web/nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
-    #   - ./apps/web/nginx/conf.d:/etc/nginx/conf.d:ro
+    #   - ./nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
+    #   - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    #   - logs:/var/log/nginx
+    #   - logs:/usr/local/openresty/nginx/logs
+    #   - /var/run/openresty
 
   server:
     image: template-turborepo-vue/server:${TAG:-latest}
     container_name: server
     env_file:
-      - ./configs/.env
+      - .env
     restart: always
     networks:
       - app-network
@@ -27,3 +30,6 @@ services:
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  - logs:./logs
