@@ -65,14 +65,15 @@ jobs:
 
           # 为每个服务构建镜像并推送到 GHCR
           for SERVICE in ${{ steps.extract-services.outputs.services }}; do
-            LOCAL_IMAGE_NAME=${{ github.repository.name }}/$SERVICE
+            LOCAL_IMAGE_NAME=${{ github.event.repository.name }}/$SERVICE
 
             IMAGE_TAG="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/$SERVICE:${{ steps.tag.outputs.tag }}"
             
+            echo "Service: $LOCAL_IMAGE_NAME"
+            echo "Pushing: $IMAGE_TAG"
+
             docker tag $LOCAL_IMAGE_NAME $IMAGE_TAG
             # docker push $IMAGE_TAG
-            echo "Service: $LOCAL_IMAGE_NAME"
-            echo "Pushed: $IMAGE_TAG"
           done
 
           docker image ls
