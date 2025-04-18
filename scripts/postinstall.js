@@ -8,10 +8,10 @@ try {
   const isCI = (await import('is-ci')).default
 
   if (isCI) process.exit()
+} catch {}
 
+try {
   const { execa } = await import('execa')
 
   if (existsSync('.git')) await execa('simple-git-hooks', { stdout: process.stdout })
-} catch (error) {
-  console.error(error)
-}
+} catch {}
