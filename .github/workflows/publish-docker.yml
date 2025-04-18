@@ -70,10 +70,10 @@ jobs:
             IMAGE_TAG="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/$SERVICE:${{ steps.tag.outputs.tag }}"
             
             echo "Service: $LOCAL_IMAGE_NAME"
-            echo "Pushing: $IMAGE_TAG"
-
             docker tag $LOCAL_IMAGE_NAME $IMAGE_TAG
-            # docker push $IMAGE_TAG
+
+            echo "Pushing: $IMAGE_TAG"
+            docker push $IMAGE_TAG
           done
 
           docker image ls
