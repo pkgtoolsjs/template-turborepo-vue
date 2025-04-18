@@ -1,26 +1,21 @@
-name: Build and Push Docker Images on Tag
+name: Publish GitHub Container Registry
 
 on:
   push:
     tags:
-      - 'v*' # 只监听以 v 开头的 tag（例如 v1.0.0）
-  workflow_dispatch: # 允许手动触发
-    inputs:
-      custom_tag:
-        description: '模拟 Git Tag（例如 v1.0.0）'
-        required: true
-        default: 'v1.0.0'
+      - 'v*'
 
 env:
   REGISTRY: ghcr.io # GitHub Container Registry
-  IMAGE_NAME: ${{ github.repository }} # 镜像名称默认使用仓库路径（如 owner/repo）
+  REPO_NAME: ${{ github.event.repository.name }}
+  REPO_NAME_FULL: ${{ github.repository }}
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write # 允许推送镜像到 GHCR
+      packages: write
 
     steps:
       - name: Checkout Repository
@@ -29,7 +24,6 @@ jobs:
       - name: Extract Dockerized Services
         id: extract-services
         run: |
-          # 提取 docker-compose.yml 中所有服务的镜像名称（需提前安装 yq）
           SERVICES=$(docker compose config --services)
           echo "services=$(echo $SERVICES | tr '\n' ' ')" >> $GITHUB_OUTPUT
         env:
@@ -44,12 +38,12 @@ jobs:
           echo "TAG=$CLEAN_TAG" >> $GITHUB_ENV
           echo "Using tag: $CLEAN_TAG"
 
-      - name: Login to GHCR
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }} # 自动使用 GitHub Token
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -62,18 +56,14 @@ jobs:
 
       - name: Push Images
         run: |
-
-          # 为每个服务构建镜像并推送到 GHCR
           for SERVICE in ${{ steps.extract-services.outputs.services }}; do
-            LOCAL_IMAGE_NAME=${{ github.event.repository.name }}/$SERVICE:${{ steps.tag.outputs.tag }}
+            LOCAL_IMAGE_TAG=${{ env.REPO_NAME }}/$SERVICE:$TAG
 
-            IMAGE_TAG="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/$SERVICE:${{ steps.tag.outputs.tag }}"
+            IMAGE="${{ env.REGISTRY }}/${{ env.REPO_NAME_FULL }}/$SERVICE"
+
+            docker tag $LOCAL_IMAGE_TAG $IMAGE:latest
+            docker tag $LOCAL_IMAGE_TAG $IMAGE:$TAG
             
-            echo "Service: $LOCAL_IMAGE_NAME"
-            docker tag $LOCAL_IMAGE_NAME $IMAGE_TAG
-
-            echo "Pushing: $IMAGE_TAG"
-            docker push $IMAGE_TAG
+            docker push $IMAGE:latest
+            docker push $IMAGE:$TAG
           done
-
-          docker image ls
