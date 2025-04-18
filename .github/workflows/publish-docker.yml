@@ -65,7 +65,7 @@ jobs:
 
           # 为每个服务构建镜像并推送到 GHCR
           for SERVICE in ${{ steps.extract-services.outputs.services }}; do
-            LOCAL_IMAGE_NAME=${{ github.event.repository.name }}/$SERVICE
+            LOCAL_IMAGE_NAME=${{ github.event.repository.name }}/$SERVICE:${{ steps.tag.outputs.tag }}
 
             IMAGE_TAG="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/$SERVICE:${{ steps.tag.outputs.tag }}"
             
