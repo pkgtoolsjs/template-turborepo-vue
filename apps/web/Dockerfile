@@ -52,18 +52,21 @@ RUN pnpm run build
 FROM openresty/openresty:1.21.4.1-0-alpine AS runner
 
 RUN addgroup -S nginx && adduser -S -G nginx nginx
-# RUN mkdir -p /var/log/nginx \
-#     && mkdir -p /var/run/openresty \
-#     && chown -R nginx:nginx /var/log/nginx \
-#     && chown -R nginx:nginx /var/run/openresty \
-#     && chown -R nginx:nginx /usr/local/openresty
-# USER nginx
+
+RUN mkdir -p /var/log/nginx
+
+RUN chown -R nginx:nginx \
+    /etc/nginx \
+    /var/log/nginx \
+    /var/run/openresty \
+    /usr/local/openresty
+USER nginx
 
 WORKDIR /usr/local/openresty/nginx/html
 
-COPY --from=pruner --chown=nobody:nobody /app/apps/web/nginx/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
-COPY --from=pruner --chown=nobody:nobody /app/apps/web/nginx/conf.d/ /etc/nginx/conf.d/
+COPY --from=pruner --chown=nginx:nginx /app/apps/web/nginx/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY --from=pruner --chown=nginx:nginx /app/apps/web/nginx/conf.d/ /etc/nginx/conf.d/
 
-COPY --from=builder --chown=nobody:nobody /app/apps/web/dist .
+COPY --from=builder --chown=nginx:nginx /app/apps/web/dist .
 
 EXPOSE 80
