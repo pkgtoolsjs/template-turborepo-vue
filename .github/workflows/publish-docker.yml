@@ -61,6 +61,7 @@ jobs:
             docker compose build $SERVICE
             IMAGE_TAG="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/$SERVICE:${{ steps.tag.outputs.tag }}"
             docker tag ${SERVICE} $IMAGE_TAG
+            echo $IMAGE_TAG
             docker push $IMAGE_TAG
             echo "Pushed: $IMAGE_TAG"
           done
