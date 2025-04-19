@@ -10,11 +10,9 @@ services:
     ports:
       - 5173:80
     # volumes:
-    #   - ./nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
-    #   - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    #   - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    #   - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
     #   - logs:/var/log/nginx
-    #   - logs:/usr/local/openresty/nginx/logs
-    #   - /var/run/openresty
 
   server:
     image: template-turborepo-vue/server:${TAG:-latest}
