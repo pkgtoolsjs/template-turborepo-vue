@@ -49,24 +49,13 @@ COPY turbo.json turbo.json
 RUN pnpm run build
 
 
-FROM openresty/openresty:1.21.4.1-0-alpine AS runner
+FROM nginxinc/nginx-unprivileged:1.26.3-alpine AS runner
 
-RUN addgroup -S nginx && adduser -S -G nginx nginx
+COPY --from=pruner --chown=nginx:nginx /app/apps/web/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --from=pruner --chown=nginx:nginx /app/apps/web/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
-RUN mkdir -p /var/log/nginx
+WORKDIR /usr/share/nginx/html
 
-RUN chown -R nginx:nginx \
-    /etc/nginx \
-    /var/log/nginx \
-    /var/run/openresty \
-    /usr/local/openresty
-USER nginx
+COPY --from=builder --chown=nginx:nginx /app/apps/web/dist/ .
 
-WORKDIR /usr/local/openresty/nginx/html
-
-COPY --from=pruner --chown=nginx:nginx /app/apps/web/nginx/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
-COPY --from=pruner --chown=nginx:nginx /app/apps/web/nginx/conf.d/ /etc/nginx/conf.d/
-
-COPY --from=builder --chown=nginx:nginx /app/apps/web/dist .
-
-EXPOSE 80
+EXPOSE 80 443 8080 4433
