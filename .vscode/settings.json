@@ -10,7 +10,7 @@
   "explorer.fileNesting.patterns": {
     "tsconfig.json": "tsconfig.*.json, env.d.ts",
     "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
-    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig, .lint-staged*, lint-staged*, .simple-git-hooks*, simple-git-hooks*"
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .node-version, .eslint*, eslint*, .prettier*, prettier*, .editorconfig, .lint-staged*, lint-staged*, .simple-git-hooks*, simple-git-hooks*"
   },
 
   "editor.codeActionsOnSave": {
