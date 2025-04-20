@@ -1,6 +1,6 @@
 services:
   web:
-    image: template-turborepo-vue/web:${TAG:-latest}
+    image: ${IMG_PREFIX}${REPO_NAME}/web:${TAG:-latest}
     container_name: web
     depends_on:
       - server
@@ -15,7 +15,7 @@ services:
     #   - logs:/var/log/nginx
 
   server:
-    image: template-turborepo-vue/server:${TAG:-latest}
+    image: ${IMG_PREFIX}${REPO_NAME}/server:${TAG:-latest}
     container_name: server
     env_file:
       - .env

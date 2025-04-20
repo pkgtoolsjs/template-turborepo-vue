@@ -1,6 +1,6 @@
 services:
   web:
-    image: template-turborepo-vue/web:${TAG:-latest}
+    image: ${IMG_PREFIX}${REPO_NAME}/web:${TAG:-latest}
     container_name: web
     depends_on:
       - server
@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: ./apps/web/Dockerfile
       args:
-        PACKAGE_NAME: '@template-turborepo-vue/web'
+        PACKAGE_NAME: '@${REPO_NAME}/web'
     networks:
       - app-network
     ports:
@@ -20,7 +20,7 @@ services:
     #   - logs:/var/log/nginx
 
   server:
-    image: template-turborepo-vue/server:${TAG:-latest}
+    image: ${IMG_PREFIX}${REPO_NAME}/server:${TAG:-latest}
     container_name: server
     env_file:
       - ./apps/server/.env
@@ -29,7 +29,7 @@ services:
       context: .
       dockerfile: ./apps/server/Dockerfile
       args:
-        PACKAGE_NAME: '@template-turborepo-vue/server'
+        PACKAGE_NAME: '@${REPO_NAME}/server'
     networks:
       - app-network
     ports:
