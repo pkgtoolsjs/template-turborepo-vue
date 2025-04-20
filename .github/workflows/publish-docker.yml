@@ -8,7 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   REPO_NAME: ${{ github.event.repository.name }}
-  IMG_PREFIX: ghcr.io/${{ github.repository }}
+  REPOSITORY: ghcr.io/${{ github.repository }}
 
 jobs:
   build-and-push:
@@ -18,15 +18,14 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get Version Tag
+      - name: Get tag and set to env
         id: tag
         run: |
           RAW_TAG=${{ github.ref_name }}
           CLEAN_TAG=${RAW_TAG#v}
-          echo "tag=$CLEAN_TAG" >> $GITHUB_OUTPUT
           echo "TAG=$CLEAN_TAG" >> $GITHUB_ENV
           echo "Using tag: $CLEAN_TAG"
 
@@ -42,10 +41,10 @@ jobs:
         env:
           COMPOSE_FILE: docker-compose.yml
 
-      - name: Build Images
+      - name: Build images
         run: |
           docker compose build
           docker image ls
 
-      - name: Push Images
+      - name: Push images
         run: docker compose push
