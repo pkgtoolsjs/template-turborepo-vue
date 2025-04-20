@@ -6,9 +6,9 @@ on:
       - 'v*'
 
 env:
-  REGISTRY: ghcr.io # GitHub Container Registry
+  REGISTRY: ghcr.io
   REPO_NAME: ${{ github.event.repository.name }}
-  REPO_NAME_FULL: ${{ github.repository }}
+  IMG_PREFIX: ghcr.io/${{ github.repository }}
 
 jobs:
   build-and-push:
@@ -20,14 +20,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Extract Dockerized Services
-        id: extract-services
-        run: |
-          SERVICES=$(docker compose config --services)
-          echo "services=$(echo $SERVICES | tr '\n' ' ')" >> $GITHUB_OUTPUT
-        env:
-          COMPOSE_FILE: docker-compose.yml
 
       - name: Get Version Tag
         id: tag
@@ -47,27 +39,13 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        env:
+          COMPOSE_FILE: docker-compose.yml
 
       - name: Build Images
         run: |
-
           docker compose build
           docker image ls
 
       - name: Push Images
-        run: |
-          for SERVICE in ${{ steps.extract-services.outputs.services }}; do
-            LOCAL_IMAGE_TAG=${{ env.REPO_NAME }}/$SERVICE:$TAG
-
-            IMAGE="${{ env.REGISTRY }}/${{ env.REPO_NAME_FULL }}/$SERVICE"
-
-            docker tag $LOCAL_IMAGE_TAG $IMAGE:latest
-            docker tag $LOCAL_IMAGE_TAG $IMAGE:$TAG
-            
-            docker push $IMAGE:latest
-            docker push $IMAGE:$TAG
-
-            docker rmi -f $LOCAL_IMAGE_TAG
-          done
-
-          docker image ls
+        run: docker compose push
