@@ -1,6 +1,9 @@
 FROM node:22.14.0-alpine AS nodebase
 
 ARG PACKAGE_NAME
+ARG CI
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 
 
 FROM nodebase AS pruner
@@ -8,9 +11,7 @@ FROM nodebase AS pruner
 RUN apk update
 RUN apk add --no-cache libc6-compat
 
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN npm config set registry https://registry.npmmirror.com
+RUN [ "$CI" != "true" ] && npm config set registry https://registry.npmmirror.com || true
 RUN npm install -g pnpm
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store
 
@@ -28,9 +29,7 @@ FROM nodebase AS builder
 RUN apk update
 RUN apk add --no-cache libc6-compat
 
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN npm config set registry https://registry.npmmirror.com
+RUN [ "$CI" != "true" ] && npm config set registry https://registry.npmmirror.com || true
 RUN npm install -g pnpm
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store
 
