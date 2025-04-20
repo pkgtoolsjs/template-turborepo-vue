@@ -38,8 +38,6 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        env:
-          COMPOSE_FILE: docker-compose.yml
 
       - name: Build images
         run: |
