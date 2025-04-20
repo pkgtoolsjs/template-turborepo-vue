@@ -29,7 +29,7 @@ services:
     image: ${REPOSITORY:-${REPO_NAME}}/server:${TAG:-latest}
     container_name: server
     environment:
-      - NODE_ENV=production
+      NODE_ENV: production
     env_file:
       - ./apps/server/.env
     restart: always
