@@ -37,6 +37,15 @@ This Turborepo has some additional tools already setup for you:
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
 
+### Docker Compose
+
+This project also supports building applications under the `apps/` directory using Docker Compose.
+A complete CI/CD workflow has been set up based on GitHub Actions, covering testing, bundling, building, and publishing Docker images.
+
+For more details, see: [Docker Compose](#docker-compose-1).
+
+## Develop and Build
+
 ### Build
 
 To build all apps and packages, run the following command:
@@ -57,33 +66,36 @@ pnpm dev
 
 ### Remote Caching
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+See [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching).
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## Docker Compose
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+We all know that deploying a project quickly and properly is one of the hardest — and most frustrating — challenges in the industry.
+That's why this project comes with a complete CI/CD workflow powered by GitHub Actions and Docker Compose.
+The best part? You can start coding right away without worrying about all those painful deployment issues!
 
-```
-cd my-turborepo
-npx turbo login
-```
+### Build Images
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+Simply run `docker compose build` and the build process will start!
 
 ```
-npx turbo link
+docker compose build
 ```
 
-## Useful Links
+### Start or Stop the Container
 
-Learn more about the power of Turborepo:
+Once the image has been built, run the following command to start the container immediately:
 
-- [Tasks](https://turbo.build/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/docs/reference/command-line-reference)
+```
+docker compose up -d
+```
+
+To stop and remove the running container:
+
+```
+docker compose down
+```
+
+## License
+
+[MIT License](LICENSE)
