@@ -1,6 +1,6 @@
 services:
   web:
-    image: ${IMG_PREFIX}${REPO_NAME}/web:${TAG:-latest}
+    image: ${REPOSITORY:-${REPO_NAME}}/web:${TAG:-latest}
     container_name: web
     depends_on:
       - server
@@ -11,8 +11,7 @@ services:
       args:
         PACKAGE_NAME: '@${REPO_NAME}/web'
       tags:
-        - '${IMG_PREFIX}${REPO_NAME}/web:latest'
-        # - '${TAG:-latest}'
+        - '${REPOSITORY:-${REPO_NAME}}/web:latest'
     networks:
       - app-network
     ports:
@@ -23,7 +22,7 @@ services:
     #   - logs:/var/log/nginx
 
   server:
-    image: ${IMG_PREFIX}${REPO_NAME}/server:${TAG:-latest}
+    image: ${REPOSITORY:-${REPO_NAME}}/server:${TAG:-latest}
     container_name: server
     env_file:
       - ./apps/server/.env
@@ -34,8 +33,7 @@ services:
       args:
         PACKAGE_NAME: '@${REPO_NAME}/server'
       tags:
-        - '${IMG_PREFIX}${REPO_NAME}/server:latest'
-        # - '${TAG:-latest}'
+        - '${REPOSITORY:-${REPO_NAME}}/server:latest'
     networks:
       - app-network
     ports:
