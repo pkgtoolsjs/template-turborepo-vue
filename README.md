@@ -1,4 +1,4 @@
-# template-turborepo-vue [![CI](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/ci.yml/badge.svg)](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/ci.yml)
+# template-turborepo-vue [![CI](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/ci.yml/badge.svg)](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/ci.yml) [![Publish GitHub Container Registry](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/publish-docker.yml/badge.svg)](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/publish-docker.yml)
 
 A monorepo project template managed with Turborepo, including both web and server applications.
 
