@@ -44,3 +44,5 @@ yarn-error.log*
 # dist
 dist
 dist-ssr
+
+.logs
