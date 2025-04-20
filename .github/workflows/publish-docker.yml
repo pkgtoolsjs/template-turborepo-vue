@@ -16,9 +16,9 @@ jobs:
     permissions:
       contents: read
       packages: write
-    # To use Turborepo Remote Caching, uncomment the next lines and follow the steps below.
-    # See https://turbo.build/docs/guides/ci-vendors/github-actions#remote-caching
     env:
+      # To use Turborepo Remote Caching, uncomment the next lines and follow the steps below.
+      # See https://turbo.build/docs/guides/ci-vendors/github-actions#remote-caching
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
