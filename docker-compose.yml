@@ -4,7 +4,6 @@ services:
     container_name: web
     environment:
       - CI=${CI:-false}
-      - DO_NOT_TRACK=1
     depends_on:
       - server
     restart: always
@@ -13,6 +12,8 @@ services:
       dockerfile: ./apps/web/Dockerfile
       args:
         PACKAGE_NAME: '@${REPO_NAME}/web'
+        TURBO_TEAM: ${TURBO_TEAM}
+        TURBO_TOKEN: ${TURBO_TOKEN}
       tags:
         - '${REPOSITORY:-${REPO_NAME}}/web:latest'
     networks:
@@ -29,7 +30,6 @@ services:
     container_name: server
     environment:
       - CI=${CI:-false}
-      - DO_NOT_TRACK=1
     env_file:
       - ./apps/server/.env
     restart: always
@@ -38,6 +38,8 @@ services:
       dockerfile: ./apps/server/Dockerfile
       args:
         PACKAGE_NAME: '@${REPO_NAME}/server'
+        TURBO_TEAM: ${TURBO_TEAM}
+        TURBO_TOKEN: ${TURBO_TOKEN}
       tags:
         - '${REPOSITORY:-${REPO_NAME}}/server:latest'
     networks:

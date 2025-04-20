@@ -2,6 +2,8 @@ FROM node:22.14.0-alpine AS base
 
 ARG PACKAGE_NAME
 ARG CI
+ARG TURBO_TEAM
+ARG TURBO_TOKEN
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
@@ -23,6 +25,9 @@ RUN turbo prune $PACKAGE_NAME --docker
 
 
 FROM base AS builder
+
+ENV TURBO_TEAM=$TURBO_TEAM
+ENV TURBO_TOKEN=$TURBO_TOKEN
 
 RUN apk update
 RUN apk add --no-cache libc6-compat
