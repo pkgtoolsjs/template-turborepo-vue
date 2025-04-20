@@ -2,8 +2,6 @@ services:
   web:
     image: ${REPOSITORY:-${REPO_NAME}}/web:${TAG:-latest}
     container_name: web
-    environment:
-      - CI=${CI:-false}
     depends_on:
       - server
     restart: always
@@ -12,6 +10,8 @@ services:
       dockerfile: ./apps/web/Dockerfile
       args:
         PACKAGE_NAME: '@${REPO_NAME}/web'
+        CI: ${CI:-false}
+        DO_NOT_TRACK: ${DO_NOT_TRACK:-1}
         TURBO_TEAM: ${TURBO_TEAM}
         TURBO_TOKEN: ${TURBO_TOKEN}
       tags:
@@ -29,7 +29,7 @@ services:
     image: ${REPOSITORY:-${REPO_NAME}}/server:${TAG:-latest}
     container_name: server
     environment:
-      - CI=${CI:-false}
+      - NODE_ENV=production
     env_file:
       - ./apps/server/.env
     restart: always
@@ -38,6 +38,8 @@ services:
       dockerfile: ./apps/server/Dockerfile
       args:
         PACKAGE_NAME: '@${REPO_NAME}/server'
+        CI: ${CI:-false}
+        DO_NOT_TRACK: ${DO_NOT_TRACK:-1}
         TURBO_TEAM: ${TURBO_TEAM}
         TURBO_TOKEN: ${TURBO_TOKEN}
       tags:
