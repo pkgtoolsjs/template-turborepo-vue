@@ -1,3 +1,10 @@
+# #############################################################################
+#                            🏗️  BASE STAGE
+# #############################################################################
+# - Sets up foundational Node.js environment
+# - Configures PNPM and CI settings
+# - Prepares build environment
+# #############################################################################
 FROM node:22.14.0-alpine AS base
 
 ARG PACKAGE_NAME
@@ -17,7 +24,13 @@ RUN apk update && \
 
 RUN npm install -g pnpm
 
-
+# #############################################################################
+#                         ✂️  PRUNER STAGE
+# #############################################################################
+# - Uses turbo prune to optimize workspace
+# - Creates lean dependency tree
+# - Reduces final image size
+# #############################################################################
 FROM base AS pruner
 
 WORKDIR /app
@@ -26,7 +39,13 @@ COPY . .
 
 RUN pnpm dlx turbo prune $PACKAGE_NAME --docker
 
-
+# #############################################################################
+#                         🔨 BUILDER STAGE
+# #############################################################################
+# - Installs production dependencies
+# - Builds application artifacts
+# - Prepares for final deployment
+# #############################################################################
 FROM base AS builder
 
 ENV TURBO_TEAM=${TURBO_TEAM}
@@ -47,7 +66,14 @@ COPY turbo.json turbo.json
 
 RUN pnpm run build
 
-
+# #############################################################################
+#                         🚀 RUNNER STAGE
+# #############################################################################
+# - Production-optimized final image
+# - Uses unprivileged nginx user
+# - Contains only runtime essentials
+# - Ready for deployment
+# #############################################################################
 FROM nginxinc/nginx-unprivileged:1.26.3-alpine AS runner
 
 COPY --from=pruner --chown=nginx:nginx /app/apps/web/nginx/nginx.conf /etc/nginx/nginx.conf
