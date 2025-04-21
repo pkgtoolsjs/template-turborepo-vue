@@ -57,12 +57,9 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
 
 FROM base AS runner
 
-RUN addgroup -S -g 1001 nodejs && adduser -S -u 1001 -G nodejs nodejs
-USER nodejs
-
 WORKDIR /app
 
-COPY --from=builder --chown=nodejs:nodejs /app .
+COPY --from=builder --chown=node:node /app .
 
 ENTRYPOINT ["node", "apps/server/dist/index.js"]
 
