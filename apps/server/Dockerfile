@@ -57,6 +57,8 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
 
 FROM base AS runner
 
+USER node
+
 WORKDIR /app
 
 COPY --from=builder --chown=node:node /app .
