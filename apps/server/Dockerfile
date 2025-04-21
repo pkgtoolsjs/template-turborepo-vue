@@ -13,15 +13,14 @@ RUN apk update && \
 
 FROM base AS base-with-pnpm
 
+ENV CI=${CI}
+ENV DO_NOT_TRACK=${DO_NOT_TRACK}
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
 RUN npm install -g pnpm
 
 FROM base-with-pnpm AS pruner
-
-ENV CI=${CI}
-ENV DO_NOT_TRACK=${DO_NOT_TRACK}
 
 WORKDIR /app
 
@@ -32,7 +31,6 @@ RUN pnpm dlx turbo prune $PACKAGE_NAME --docker
 
 FROM base-with-pnpm AS builder
 
-ENV CI=${CI}
 ENV TURBO_TEAM=${TURBO_TEAM}
 ENV TURBO_TOKEN=${TURBO_TOKEN}
 
