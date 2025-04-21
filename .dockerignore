@@ -34,4 +34,6 @@ packages/*/dist
 *.md
 
 .github
-deploy
+.logs
+docker
+templates
