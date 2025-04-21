@@ -2,44 +2,35 @@ FROM node:22.14.0-alpine AS base
 
 ARG PACKAGE_NAME
 ARG CI
-ENV CI=${CI}
-ARG DO_NOT_TRACK
-ENV DO_NOT_TRACK=${DO_NOT_TRACK}
 ARG TURBO_TEAM
 ARG TURBO_TOKEN
+ARG DO_NOT_TRACK
+
+ENV CI=${CI}
+ENV DO_NOT_TRACK=${DO_NOT_TRACK}
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+
+RUN apk update && \
+  apk add --no-cache libc6-compat && \
+  [ "$CI" != "true" ] && npm config set registry https://registry.npmmirror.com || true
+
+RUN npm install -g pnpm
 
 
 FROM base AS pruner
 
-RUN apk update
-RUN apk add --no-cache libc6-compat
-
-RUN [ "$CI" != "true" ] && npm config set registry https://registry.npmmirror.com || true
-RUN npm install -g pnpm
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store
-
 WORKDIR /app
-
 
 COPY . .
 
-RUN pnpm install turbo -g
-RUN turbo prune $PACKAGE_NAME --docker
+RUN pnpm dlx turbo prune $PACKAGE_NAME --docker
 
 
 FROM base AS builder
 
-ENV TURBO_TEAM=$TURBO_TEAM
-ENV TURBO_TOKEN=$TURBO_TOKEN
-
-RUN apk update
-RUN apk add --no-cache libc6-compat
-
-RUN [ "$CI" != "true" ] && npm config set registry https://registry.npmmirror.com || true
-RUN npm install -g pnpm
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store
+ENV TURBO_TEAM=${TURBO_TEAM}
+ENV TURBO_TOKEN=${TURBO_TOKEN}
 
 WORKDIR /app
 
@@ -48,7 +39,8 @@ COPY --from=pruner /app/scripts ./scripts
 COPY --from=pruner /app/out/json/ .
 COPY --from=pruner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
-RUN pnpm install
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+  pnpm install
 
 COPY --from=pruner /app/out/full/ .
 COPY turbo.json turbo.json
