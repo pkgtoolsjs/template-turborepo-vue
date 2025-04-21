@@ -65,8 +65,7 @@ FROM base AS runner
 RUN apk update
 RUN apk add --no-cache libc6-compat
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nodejs
+RUN addgroup -S -g 1001 nodejs && adduser -S -u 1001 -G nodejs nodejs
 USER nodejs
 
 WORKDIR /app
