@@ -37,3 +37,4 @@ packages/*/dist
 .logs
 docker
 templates
+plopfile.*
