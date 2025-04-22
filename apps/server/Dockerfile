@@ -78,7 +78,8 @@ RUN pnpm run build
 RUN find . -type d \( -name node_modules -o -name src \) -prune -exec rm -rf '{}' +
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-  pnpm install -P
+  pnpm install -P && \
+  rm -rf ./scripts
 
 # ##############################################################################
 #                         🚀 RUNNER STAGE
