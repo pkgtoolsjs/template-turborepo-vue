@@ -5,7 +5,6 @@ node_modules
 .pnpm-store
 .pnpm-debug.log
 npm-debug.log
-yarn.lock
 *.log
 
 .git
@@ -31,7 +30,7 @@ packages/*/dist
 .env.*
 *.local.*
 
-*.md
+**/*.md
 
 .github
 .logs
