@@ -16,6 +16,9 @@ importers:
       '@types/yargs':
         specifier: ^17.0.33
         version: 17.0.33
+      consola:
+        specifier: ^3.4.2
+        version: 3.4.2
       cpy:
         specifier: ^11.1.0
         version: 11.1.0

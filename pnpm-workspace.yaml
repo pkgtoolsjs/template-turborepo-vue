@@ -4,3 +4,9 @@ packages:
 
 patchedDependencies:
   plop@4.0.1: patches/plop@4.0.1.patch
+
+allowedDeprecatedVersions:
+  glob: '7.2.3'
+  inflight: '1.0.6'
+  lodash.get: '4.4.2'
+  rimraf: '3.0.2'

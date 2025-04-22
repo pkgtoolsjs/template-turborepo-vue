@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@types/yargs": "^17.0.33",
+    "consola": "^3.4.2",
     "cpy": "^11.1.0",
     "execa": "^9.5.2",
     "is-ci": "^4.1.0",
