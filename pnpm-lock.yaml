@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  plop@4.0.1:
+    hash: 57eb4d02c4abdcbbb996d65376da26e45ef30ef1f07288476699c505f8805b3a
+    path: patches/plop@4.0.1.patch
+
 importers:
 
   .:
@@ -28,7 +33,7 @@ importers:
         version: 7.0.2
       plop:
         specifier: ^4.0.1
-        version: 4.0.1
+        version: 4.0.1(patch_hash=57eb4d02c4abdcbbb996d65376da26e45ef30ef1f07288476699c505f8805b3a)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -7027,7 +7032,7 @@ snapshots:
       exsolve: 1.0.5
       pathe: 2.0.3
 
-  plop@4.0.1:
+  plop@4.0.1(patch_hash=57eb4d02c4abdcbbb996d65376da26e45ef30ef1f07288476699c505f8805b3a):
     dependencies:
       '@types/liftoff': 4.0.3
       chalk: 5.4.1
