@@ -1,6 +1,8 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueRouter from 'unplugin-vue-router/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 import ui from '@nuxt/ui/vite'
@@ -19,11 +21,14 @@ export default defineConfig({
     }
   },
   plugins: [
+    vueRouter({
+      dts: 'src/types/typed-router.d.ts'
+    }),
     vue(),
     ui({
       autoImport: {
         dts: 'src/types/auto-imports.d.ts',
-        imports: ['vue', 'vue-router', 'pinia']
+        imports: ['vue', VueRouterAutoImports, 'pinia']
       },
       components: {
         dts: 'src/types/components.d.ts',
