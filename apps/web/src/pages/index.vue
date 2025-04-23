@@ -1,8 +1,6 @@
 <script setup lang="ts">
-definePage({
-  meta: {
-    title: 'Hello World! - Vue'
-  }
+useHead({
+  title: 'Hello World!'
 })
 </script>
 

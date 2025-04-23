@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import { unheadVueComposablesImports } from '@unhead/vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 import ui from '@nuxt/ui/vite'
@@ -28,7 +29,7 @@ export default defineConfig({
     ui({
       autoImport: {
         dts: 'src/types/auto-imports.d.ts',
-        imports: ['vue', VueRouterAutoImports, 'pinia']
+        imports: ['vue', VueRouterAutoImports, 'pinia', '@vueuse/core', unheadVueComposablesImports]
       },
       components: {
         dts: 'src/types/components.d.ts',

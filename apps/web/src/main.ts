@@ -2,6 +2,7 @@ import './assets/tailwind.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { createHead } from '@unhead/vue/client'
 
 import ui from '@nuxt/ui/vue-plugin'
 
@@ -12,6 +13,15 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
+app.use(
+  createHead({
+    init: [
+      {
+        titleTemplate: '%s | Vue App'
+      }
+    ]
+  })
+)
 app.use(ui)
 
 app.mount('#app')
