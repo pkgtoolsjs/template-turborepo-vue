@@ -1,8 +1,8 @@
-name: ${REPOSITORY:-${REPO_NAME}}
+name: ${REPO_NAME}
 
 services:
   web:
-    image: ${COMPOSE_PROJECT_NAME}/web:${TAG:-latest}
+    image: ${REPOSITORY:-${COMPOSE_PROJECT_NAME}}/web:${TAG:-latest}
     container_name: web
     depends_on:
       - server
@@ -11,13 +11,13 @@ services:
       context: .
       dockerfile: ./apps/web/Dockerfile
       args:
-        PACKAGE_NAME: '@${REPO_NAME}/web'
+        PACKAGE_NAME: '@${COMPOSE_PROJECT_NAME}/web'
         CI: ${CI:-false}
         DO_NOT_TRACK: ${DO_NOT_TRACK:-1}
         TURBO_TEAM: ${TURBO_TEAM}
         TURBO_TOKEN: ${TURBO_TOKEN}
       tags:
-        - '${COMPOSE_PROJECT_NAME}/web:latest'
+        - '${REPOSITORY:-${COMPOSE_PROJECT_NAME}}/web:latest'
     networks:
       - app-network
     ports:
@@ -28,7 +28,7 @@ services:
     #   - logs:/var/log/nginx
 
   server:
-    image: ${COMPOSE_PROJECT_NAME}/server:${TAG:-latest}
+    image: ${REPOSITORY:-${COMPOSE_PROJECT_NAME}}/server:${TAG:-latest}
     container_name: server
     environment:
       NODE_ENV: production
@@ -39,13 +39,13 @@ services:
       context: .
       dockerfile: ./apps/server/Dockerfile
       args:
-        PACKAGE_NAME: '@${REPO_NAME}/server'
+        PACKAGE_NAME: '@${COMPOSE_PROJECT_NAME}/server'
         CI: ${CI:-false}
         DO_NOT_TRACK: ${DO_NOT_TRACK:-1}
         TURBO_TEAM: ${TURBO_TEAM}
         TURBO_TOKEN: ${TURBO_TOKEN}
       tags:
-        - '${COMPOSE_PROJECT_NAME}/server:latest'
+        - '${REPOSITORY:-${COMPOSE_PROJECT_NAME}}/server:latest'
     networks:
       - app-network
     ports:
