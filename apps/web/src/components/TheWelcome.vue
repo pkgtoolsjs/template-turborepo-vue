@@ -5,6 +5,7 @@ import { useHttp } from '@/utils/http'
 const counterStore = useCounterStore()
 const http = useHttp()
 
+const mode = useColorMode()
 const msg = ref('')
 
 onMounted(async () => {
@@ -18,7 +19,15 @@ onMounted(async () => {
 
 <template>
   <p>{{ msg }}</p>
+
   <UButton :title="`Count: ${counterStore.count}`" @click="counterStore.increment()">
     Count: {{ counterStore.count }}
   </UButton>
+
+  <UButton
+    :icon="mode === 'dark' ? 'i-lucide-moon' : 'i-lucide-sun'"
+    color="neutral"
+    variant="ghost"
+    @click="mode = mode === 'dark' ? 'light' : 'dark'"
+  />
 </template>
