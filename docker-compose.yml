@@ -1,6 +1,8 @@
+name: ${REPOSITORY:-${REPO_NAME}}
+
 services:
   web:
-    image: ${REPOSITORY:-${REPO_NAME}}/web:${TAG:-latest}
+    image: ${COMPOSE_PROJECT_NAME}/web:${TAG:-latest}
     container_name: web
     depends_on:
       - server
@@ -15,7 +17,7 @@ services:
         TURBO_TEAM: ${TURBO_TEAM}
         TURBO_TOKEN: ${TURBO_TOKEN}
       tags:
-        - '${REPOSITORY:-${REPO_NAME}}/web:latest'
+        - '${COMPOSE_PROJECT_NAME}/web:latest'
     networks:
       - app-network
     ports:
@@ -26,7 +28,7 @@ services:
     #   - logs:/var/log/nginx
 
   server:
-    image: ${REPOSITORY:-${REPO_NAME}}/server:${TAG:-latest}
+    image: ${COMPOSE_PROJECT_NAME}/server:${TAG:-latest}
     container_name: server
     environment:
       NODE_ENV: production
@@ -43,7 +45,7 @@ services:
         TURBO_TEAM: ${TURBO_TEAM}
         TURBO_TOKEN: ${TURBO_TOKEN}
       tags:
-        - '${REPOSITORY:-${REPO_NAME}}/server:latest'
+        - '${COMPOSE_PROJECT_NAME}/server:latest'
     networks:
       - app-network
     ports:
