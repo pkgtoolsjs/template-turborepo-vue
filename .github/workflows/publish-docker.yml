@@ -50,7 +50,7 @@ jobs:
 
           echo "————————————————————————————————————————————————————————————"
           echo "  Repo name: $REPO_NAME"
-          echo " Repository: $REPOSITORY/*"
+          echo " Repository: $REPOSITORY"
           echo "        Tag: $TAG"
           echo "      Turbo: Team: ${{ vars.TURBO_TEAM }}, TOKEN: ${{ secrets.TURBO_TOKEN }}"
           echo "————————————————————————————————————————————————————————————"
