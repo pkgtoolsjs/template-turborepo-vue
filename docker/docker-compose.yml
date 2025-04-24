@@ -1,6 +1,8 @@
+name: ${REPO_NAME}
+
 services:
   web:
-    image: ${REPOSITORY:-${REPO_NAME}}/web:${TAG:-latest}
+    image: ${REPOSITORY:-${COMPOSE_PROJECT_NAME}}/web:${TAG:-latest}
     container_name: web
     depends_on:
       - server
@@ -15,10 +17,10 @@ services:
     #   - logs:/var/log/nginx
 
   server:
-    image: ${REPOSITORY:-${REPO_NAME}}/server:${TAG:-latest}
+    image: ${REPOSITORY:-${COMPOSE_PROJECT_NAME}}/server:${TAG:-latest}
     container_name: server
     env_file:
-      - .env
+      - server.env
     restart: always
     networks:
       - app-network
