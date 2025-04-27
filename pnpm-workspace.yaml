@@ -10,3 +10,7 @@ allowedDeprecatedVersions:
   inflight: '1.0.6'
   lodash.get: '4.4.2'
   rimraf: '3.0.2'
+
+onlyBuiltDependencies:
+  - esbuild
+  - vue-demi
