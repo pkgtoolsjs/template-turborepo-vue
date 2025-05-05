@@ -28,7 +28,7 @@
     "@template-turborepo-vue/tsconfig": "workspace:*",
     "@tsconfig/node22": "^22.0.1",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "~22.14.1",
+    "@types/node": "~22.15.0",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vitejs/plugin-vue-jsx": "^4.1.2",
     "@vue/tsconfig": "^0.7.0",
@@ -41,7 +41,7 @@
     "unplugin-auto-import": "^19.1.2",
     "unplugin-vue-components": "^28.5.0",
     "unplugin-vue-router": "^0.12.0",
-    "vite": "^6.3.4",
+    "vite": "^6.3.5",
     "vite-plugin-vue-devtools": "^7.7.6",
     "vue-tsc": "^2.2.10"
   }
