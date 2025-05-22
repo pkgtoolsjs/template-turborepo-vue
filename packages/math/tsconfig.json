@@ -6,6 +6,6 @@
     "paths": { "@/*": ["src/*"] }
   },
 
-  "include": ["src", "tsup.config.ts"],
+  "include": ["src", "tsdown.config.ts"],
   "exclude": ["node_modules", "dist"]
 }
