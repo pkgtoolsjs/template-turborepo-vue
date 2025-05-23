@@ -5,7 +5,7 @@
 # - Configures PNPM and CI settings
 # - Prepares build environment
 # #############################################################################
-FROM node:22.15.0-alpine AS base
+FROM node:22.16.0-alpine AS base
 
 ARG PACKAGE_NAME
 ARG CI
