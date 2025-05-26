@@ -1,4 +1,4 @@
-# template-turborepo-vue [![CI](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/ci.yml/badge.svg)](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/ci.yml) [![Publish GitHub Container Registry](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/publish-docker.yml/badge.svg)](https://github.com/nice-winter/template-turborepo-vue/actions/workflows/publish-docker.yml)
+# template-turborepo-vue [![CI](https://github.com/pkgtoolsjs/template-turborepo-vue/actions/workflows/ci.yml/badge.svg)](https://github.com/pkgtoolsjs/template-turborepo-vue/actions/workflows/ci.yml) [![Publish GitHub Container Registry](https://github.com/pkgtoolsjs/template-turborepo-vue/actions/workflows/publish-docker.yml/badge.svg)](https://github.com/pkgtoolsjs/template-turborepo-vue/actions/workflows/publish-docker.yml)
 
 A monorepo project template managed with Turborepo, including both web and server applications.
 
@@ -7,7 +7,7 @@ A monorepo project template managed with Turborepo, including both web and serve
 Run the following command:
 
 ```sh
-npx degit https://github.com/nice-winter/template-turborepo-vue.git my-turborepo
+npx degit https://github.com/pkgtoolsjs/template-turborepo-vue.git my-turborepo
 ```
 
 ## What's inside?
