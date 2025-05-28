@@ -28,7 +28,7 @@
     "cpy": "^11.1.0",
     "execa": "^9.6.0",
     "is-ci": "^4.1.0",
-    "lint-staged": "^16.0.0",
+    "lint-staged": "^16.1.0",
     "npm-run-all2": "^8.0.4",
     "plop": "^4.0.1",
     "prettier": "^3.5.3",
