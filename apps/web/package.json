@@ -28,7 +28,7 @@
     "@template-turborepo-vue/tsconfig": "workspace:*",
     "@tsconfig/node22": "^22.0.2",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "~22.15.30",
+    "@types/node": "~22.15.31",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vitejs/plugin-vue-jsx": "^4.2.0",
     "@vue/tsconfig": "^0.7.0",
