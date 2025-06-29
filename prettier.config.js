@@ -3,6 +3,7 @@
  * @type {import('prettier').Config}
  */
 const config = {
+  plugins: ['@prettier/plugin-oxc'],
   semi: false,
   singleQuote: true,
   printWidth: 100,
