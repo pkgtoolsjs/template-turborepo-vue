@@ -40,3 +40,4 @@ yarn.lock
 src/types/*
 !src/types/README.md
 !src/types/vue-router.d.ts
+!src/types/typed-router.d.ts
