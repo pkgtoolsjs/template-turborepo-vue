@@ -20,7 +20,7 @@
     "@template-turborepo-vue/eslint-config": "workspace:*",
     "@template-turborepo-vue/tsconfig": "workspace:*",
     "@types/node": "~22.15.35",
-    "eslint": "^9.31.0",
+    "eslint": "^9.32.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.6.2",
     "tsdown": "^0.12.9",
