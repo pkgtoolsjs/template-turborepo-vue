@@ -23,9 +23,9 @@
     "eslint": "^9.32.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.6.2",
-    "tsdown": "^0.12.9",
+    "tsdown": "^0.13.0",
     "tslib": "^2.8.1",
     "tsx": "^4.20.3",
-    "typescript": "~5.8.3"
+    "typescript": "~5.9.2"
   }
 }
