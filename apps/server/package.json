@@ -19,7 +19,7 @@
     "@fastify/cors": "^11.1.0",
     "@fastify/middie": "^9.0.3",
     "@template-turborepo-vue/math": "workspace:*",
-    "fastify": "^5.4.0"
+    "fastify": "^5.5.0"
   },
   "devDependencies": {
     "@template-turborepo-vue/eslint-config": "workspace:*",
@@ -28,9 +28,9 @@
     "eslint": "^9.33.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.6.2",
-    "tsdown": "^0.13.4",
+    "tsdown": "^0.14.1",
     "tslib": "^2.8.1",
-    "tsx": "^4.20.3",
+    "tsx": "^4.20.4",
     "typescript": "~5.9.2"
   }
 }
