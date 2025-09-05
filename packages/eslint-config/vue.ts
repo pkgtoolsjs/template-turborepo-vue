@@ -24,6 +24,16 @@ const baseConfig = defineConfigWithVueTs(
   skipFormatting,
 
   {
+    name: 'app/parser',
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname
+      }
+    }
+  },
+
+  {
     files: ['**/*.{ts,mts,tsx,vue}'],
     rules: {
       'no-unref': 'off',

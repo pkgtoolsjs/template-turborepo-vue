@@ -1,8 +1,9 @@
 import eslint from '@eslint/js'
-import tseslint, { InfiniteDepthConfigWithExtends } from 'typescript-eslint'
+import { defineConfig } from 'eslint/config'
+import tseslint from 'typescript-eslint'
 import eslintConfigPrettier from 'eslint-config-prettier'
 
-const baseConfig = tseslint.config(
+const baseConfig = defineConfig(
   {
     name: 'app/files-to-lint',
     files: ['**/*.{ts,tsx,mts,cts}']
@@ -41,8 +42,8 @@ const baseConfig = tseslint.config(
   }
 )
 
-const eslintConfigTypescript = (...config: InfiniteDepthConfigWithExtends[]) => {
-  return tseslint.config(baseConfig, ...config)
+const eslintConfigTypescript = (...config: Parameters<typeof defineConfig>[0][]) => {
+  return defineConfig(baseConfig, ...config)
 }
 
 export { eslintConfigTypescript, tseslint }
