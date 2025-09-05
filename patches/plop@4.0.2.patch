@@ -1,0 +1,15 @@
+diff --git a/src/plop.d.ts b/src/plop.d.ts
+index 95b8dd8626ba065b8ae1c175d8fc0e6db4c4a08a..8d81658ea3c5cc8eea67fb13d287532add93d6d4 100644
+--- a/src/plop.d.ts
++++ b/src/plop.d.ts
+@@ -1,4 +1,5 @@
+ import * as Liftoff from "liftoff";
++import { Ora } from 'ora';
+ 
+ export {
+   ActionConfig,
+@@ -21,3 +22,4 @@ export const run: (
+   _: any,
+   passArgsBeforeDashes: boolean,
+ ) => Promise<void>;
++export const progressSpinner: Ora
