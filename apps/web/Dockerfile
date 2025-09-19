@@ -74,7 +74,7 @@ RUN pnpm run build
 # - Contains only runtime essentials
 # - Ready for deployment
 # #############################################################################
-FROM nginxinc/nginx-unprivileged:1.26.3-alpine AS runner
+FROM nginxinc/nginx-unprivileged:1.28.0-alpine AS runner
 
 COPY --from=pruner --chown=nginx:nginx /app/apps/web/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=pruner --chown=nginx:nginx /app/apps/web/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
