@@ -15,6 +15,6 @@ onlyBuiltDependencies:
   - vue-demi
 
 patchedDependencies:
-  plop@4.0.2: patches/plop@4.0.2.patch
+  plop@4.0.3: patches/plop@4.0.3.patch
 
 shamefullyHoist: true
