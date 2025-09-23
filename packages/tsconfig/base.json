@@ -1,5 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+
   "compilerOptions": {
     "composite": false,
     "esModuleInterop": true,
@@ -13,5 +14,6 @@
     "strict": true,
     "strictNullChecks": true
   },
+
   "exclude": ["node_modules"]
 }
