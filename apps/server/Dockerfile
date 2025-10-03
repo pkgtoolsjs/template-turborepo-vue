@@ -5,7 +5,7 @@
 # - Configures system dependencies
 # - Optional: Sets npm registry for non-CI environments
 # ##############################################################################
-FROM node:24.8.0-alpine AS base
+FROM node:24.9.0-alpine AS base
 
 ARG PACKAGE_NAME
 ARG CI
